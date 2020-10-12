@@ -1,0 +1,51 @@
+<?php
+
+namespace tools\turbo\src\SomeBrand\YandexTurbo;
+
+class Counter
+{
+    const TYPE_LIVE_INTERNET    = 'LiveInternet';
+    const TYPE_GOOGLE_ANALYTICS = 'Google';
+    const TYPE_MEDIASCOPE       = 'Mediascope';
+    const TYPE_MAIL_RU          = 'MailRu';
+    const TYPE_RAMBLER          = 'Rambler';
+    const TYPE_YANDEX           = 'Yandex';
+    const TYPE_CUSTOM           = 'custom';
+
+    private $type;
+    private $id;
+    private $url;
+
+    public function __construct( $type, $id = null, $url = null)
+    {
+        $this->type = $type;
+        $this->id   = $id;
+        $this->url  = $url;
+
+        if ($type == self::TYPE_CUSTOM && !isset($url)) {
+            throw new \UnexpectedValueException('Please set url for custom counter');
+        }
+
+        if ($type != self::TYPE_CUSTOM && !isset($id)) {
+            throw new \UnexpectedValueException('Please set id for non custom counter');
+        }
+    }
+
+    public function appendTo( $channel )
+    {
+        $channel->addCounter($this);
+        return $this;
+    }
+
+    public function asXML()
+    {
+        $idPart = $this->id ? ' id="' . $this->id . '" ' : '';
+        $urlPart = $this->url ? ' url="' . $this->url . '" ' : '';
+
+        $xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8" ?><yandex:analytics type="'
+            . $this->type . '"' . $idPart . $urlPart . '></yandex:analytics>',
+            LIBXML_NOERROR | LIBXML_ERR_NONE | LIBXML_ERR_FATAL);
+
+        return $xml;
+    }
+}

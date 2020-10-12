@@ -1,0 +1,5 @@
+SELECT 1 as 'type', n_defects.name as 'url', GROUP_CONCAT(n_defect_syns.name SEPARATOR '@') as 'syns' FROM `n_defects` JOIN n_defect_syns ON n_defects.id = n_defect_syns.n_defect_id GROUP BY n_defects.id
+UNION
+SELECT 2 as 'type', p_defects.name as 'url', GROUP_CONCAT(p_defect_syns.name SEPARATOR '@') as 'syns' FROM `p_defects` JOIN p_defect_syns ON p_defects.id = p_defect_syns.p_defect_id GROUP BY p_defects.id
+UNION
+SELECT 3 as 'type', f_defects.name as 'url', GROUP_CONCAT(f_defect_syns.name SEPARATOR '@') as 'syns' FROM `f_defects` JOIN f_defect_syns ON f_defects.id = f_defect_syns.f_defect_id GROUP BY f_defects.id
