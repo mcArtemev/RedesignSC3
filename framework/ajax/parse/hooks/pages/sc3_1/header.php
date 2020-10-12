@@ -76,9 +76,12 @@ if($this->_datas['marka']['name'] == 'BenQ'){
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="/templates/moscow/img/<?=strtr(trim($marka_lower),' ','_')?>/favicon.ico" />
         <!-- <link href="/min/f=/templates/moscow/css/font-awesome.min.css,/templates/moscow/css/jquery.mCustomScrollbar.min.css,/templates/moscow/css/styles.css" rel="stylesheet" type="text/css"> -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
         <link rel="stylesheet" href="/templates/moscow/css/myStyle.css" type="text/css">
-        <link rel="stylesheet" href="/templates/moscow/css/styles.css" type="text/css">
+        <link rel="stylesheet" href="/templates/moscow/css/styles.css" type="text/css">        
+        <!-- <link rel="stylesheet" href="/templates/moscow/css/stylesOld.css" type="text/css"> -->
         <link rel="stylesheet" href="/templates/moscow/css/owl.theme.default.min.css" type="text/css">
+        
 
         <? if ($analytics):?>
         <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -155,33 +158,53 @@ if($this->_datas['marka']['name'] == 'BenQ'){
       <noscript><p><img src="/stat/piwik.php?idsite=<?=$this->_datas['piwik']?>&amp;rec=1" style="border:0;" alt="" /></p></noscript>
     <?php } ?>
     
-        <div class="header-row">
-            <div class="toprow">
-                <div class="container">
-                    <? if ($url != $urlHome) :?>
-                        <?if(in_array($url, ['/o_nas/', '/kontakty/', '/vakansii/', '/dostavka/','/sitemap/','/sitemap_noutbuki/','/sitemap_planshety/' , '/sitemap_telefony/']) || !isset($this->_datas['marka'])):?>
-                            <a class="logo" href="<?=$urlHome?>" style="background: url(/templates/moscow/img/citys/city<?=(($this->_datas['region']['code'] ? '-'.$this->_datas['region']['code'] : ''))?>.png);">
-                                <img src="/templates/moscow/img/support/logotip.png">
-                            </a>
+    <section class="infomenu-container">
+        <div class="container">
+            <ul class="infomenu">
+                <li class="infomenu-item"><a href="#">Главная</a></li>
+                <li class="infomenu-item"><a href="#">Цены</a></li>
+                <li class="infomenu-item"><a href="#">О сервисе</a></li>
+                <li class="infomenu-item"><a href="#">Вакансии</a></li>
+                <li class="infomenu-item"><a href="#">Контакты</a></li>
+            </ul>
+        </div>
+    </section>
+    
+        <header class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-auto">
+                        <? if ($url != $urlHome) :?>
+                            <?if(in_array($url, ['/o_nas/', '/kontakty/', '/vakansii/', '/dostavka/','/sitemap/','/sitemap_noutbuki/','/sitemap_planshety/' , '/sitemap_telefony/']) || !isset($this->_datas['marka'])):?>
+                                <a class="logotype" href="<?=$urlHome?>" style="background: url(/templates/moscow/img/citys/city<?=(($this->_datas['region']['code'] ? '-'.$this->_datas['region']['code'] : ''))?>.png);">
+                                    <img src="/templates/moscow/img/support/logotip.png">
+                                </a>
+                            <?else:?>
+                                <a class="logotype" href="<?=$urlHome?>" style="background: url(/templates/moscow/img/citys/city<?=(($this->_datas['region']['code'] ? '-'.$this->_datas['region']['code'] : ''))?>.png);">
+                                    <img src="/templates/moscow/img/<?=strtr(trim($marka_lower),' ','_')?>/logotip.png">
+                                </a>
+                            <? endif;?>
+                            
                         <?else:?>
-                            <a class="logo" href="<?=$urlHome?>" style="background: url(/templates/moscow/img/citys/city<?=(($this->_datas['region']['code'] ? '-'.$this->_datas['region']['code'] : ''))?>.png);">
-                                <img src="/templates/moscow/img/<?=strtr(trim($marka_lower),' ','_')?>/logotip.png">
-                            </a>
-                        <? endif;?>
- 
-                    <?else:?>
-                        <span class="logo" style="background: url(/templates/moscow/img/citys/city<?=(($this->_datas['region']['code'] ? '-'.$this->_datas['region']['code'] : ''))?>.png);">
-                        	<img src="/templates/moscow/img/<?=strtr(trim($marka_lower),' ','_')?>/logotip.png">
-                        </span>
-                    <?endif;?>
-                    <div class="logoname">Сервисный центр по ремонту<?=(!in_array($url, ['/o_nas/', '/kontakty/', '/vakansii/', '/dostavka/']) && isset($this->_datas['marka']) ? ' '.$this->_datas['marka']['name'] : '')?> в <?=$this->_datas['region']['name_pe']?></div>
-                    <div class="worktime">
-                        <a href="tel:+<?=$this->_datas['phone']?>" class="phone"><i class="fa fa-phone"></i><span class="mango-phone">
+                            <span class="logotype" style="background: url(/templates/moscow/img/citys/city<?=(($this->_datas['region']['code'] ? '-'.$this->_datas['region']['code'] : ''))?>.png);">
+                            	<img src="/templates/moscow/img/<?=strtr(trim($marka_lower),' ','_')?>/logotip.png">
+                            </span>
+                        <?endif;?>
+                    </div>
+                    <div class="col-md-3 align-self-center"> 
+                        <p class="slogan-company">Сервисный центр по ремонту<?=(!in_array($url, ['/o_nas/', '/kontakty/', '/vakansii/', '/dostavka/']) && isset($this->_datas['marka']) ? ' '.$this->_datas['marka']['name'] : '')?> в <?=$this->_datas['region']['name_pe']?></p>
+                    </div>
+                    <div class="col-auto align-self-center ml-auto">
+                        <button class="inputbutton inputbutton-outlinecallBackBtn">Обратный звонок</button>
+                    </div>  
+                    <div class="col-auto">
+                        <a href="tel:+<?=$this->_datas['phone']?>" class="phone"><i class="fa fa-phone icon"></i><span class="mango-phone">
                                     <?=tools::format_phone($this->_datas['phone'])?></span></a>
                         <div class="time">график работы: <?=$time?></div>
                     </div>
-                    <button class = "btnred callBackBtn">Обратный звонок</button>
+                    
                 </div>
+            </div>
             </div>
             <?php if (in_array($this->_datas['region']['name'], ['Новосибирск', 'Нижний Новгород', 'Екатеринбург', 'Казань', 'Санкт-Петербург', 'Москва'])) { ?>
               <div class="navrow">
@@ -296,4 +319,4 @@ if($this->_datas['marka']['name'] == 'BenQ'){
                 </div>
             </div>
           <?php }?>
-        </div>
+        </header>
