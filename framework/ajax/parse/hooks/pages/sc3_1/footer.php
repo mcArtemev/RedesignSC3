@@ -194,7 +194,7 @@ else {
                     </div>
                     <div class="inputform inputformreq">
                         <input type="tel" placeholder="Контактный телефон" class="form-control">
-                        <span class="input-error">Заполните телефон</span>
+                        <span class="input-error">Заполните ваш телефон</span>
                     </div>
                     <input type="submit" class="inputbutton" value="Записаться" id="submit">
                 </form>

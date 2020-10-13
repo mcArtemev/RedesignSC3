@@ -50,6 +50,10 @@
                                     </div>
                                     <input type="submit" class="inputbutton" value="Записаться на ремонт" id="submit">
                                 </form>
+                                <div class="successMessage">
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                        Форма отправлена. В ближайшее время вам перезвонит наш консультант.
+                                </div>
                             </div>
                             
                         </div>
