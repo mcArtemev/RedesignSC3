@@ -166,7 +166,7 @@ if (in_array($this->_datas['region']['name'], ['Новосибирск', 'Ниж
                         <input type="tel" placeholder="Контактный телефон">
                         <span class="input-error">Заполните ваш телефон</span>
                     </div>
-                    <input type="submit" class="inputbutton" value="Записаться" id="submit">
+                    <input type="submit" class="inputbutton" value="Записатся" id="submit">
                 </form>
                 <div class="successMessage">
                   <i class="fa fa-check" aria-hidden="true"></i>

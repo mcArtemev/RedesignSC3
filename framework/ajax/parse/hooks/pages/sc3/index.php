@@ -9,9 +9,9 @@ $accord = array('ноутбук' => 'remont_noutbukov', 'планшет' => 'rem
 $accord_img = array('ноутбук' => 'noutbuk', 'планшет' => 'planshet', 'смартфон' => 'telefon');
 
 ?>
-    <? $banner_img = '/templates/moscow/img/'.$marka_lower.'/imagerow.png';
+    <? /*$banner_img = '/templates/moscow/img/'.$marka_lower.'/imagerow.png';
        $banner_right = false;
-        include __DIR__.'/banner.php'; ?>
+        include __DIR__.'/banner.php'; */?>
 
         <div class="aboutrow">
             <div class="container">

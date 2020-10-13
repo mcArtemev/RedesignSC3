@@ -193,8 +193,8 @@ else {
                         <input type="text" name="name" placeholder="Ваше имя">
                     </div>
                     <div class="inputform inputformreq">
-                        <input type="tel" placeholder="Контактный телефон">
-                        <span class="input-error">Заполните ваш телефон</span>
+                        <input type="tel" placeholder="Контактный телефон" class="form-control">
+                        <span class="input-error">Заполните телефон</span>
                     </div>
                     <input type="submit" class="inputbutton" value="Записаться" id="submit">
                 </form>

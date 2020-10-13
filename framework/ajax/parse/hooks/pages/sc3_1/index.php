@@ -7,21 +7,14 @@ $marka_ru =  $this->_datas['marka']['ru_name'];
 
 //$accord = array('ноутбук' => 'remont_noutbukov', 'планшет' => 'remont_planshetov', 'смартфон' => 'remont_telefonov');
 //$accord_img = array('ноутбук' => 'noutbuk', 'планшет' => 'planshet', 'смартфон' => 'telefon');
-$accord = $this->_datas['accord'];
-$accord_img = $this->_datas['accord_image'];
+// $accord = $this->_datas['accord'];
+// $accord_img = $this->_datas['accord_image'];       
+// $banner_right = false;
 
-
-         if (file_exists($_SERVER['DOCUMENT_ROOT'].'/../sc3/templates/moscow/img/'.$marka_lower.'/imagerow.png')) { // Одно изображение
-            $banner_img = '/templates/moscow/img/'.strtr(trim($marka_lower),' ','_').'/imagerow.png"';
-        } else { // Несколько
-            $banner_img = '/templates/moscow/img/imagerow.png" style="position: absolute;"';
-            $banner_img_dop = '/templates/moscow/img/'.strtr(trim($marka_lower),' ','_').'/banner.png" style="position: absolute;z-index: 500;height: 100%;width: auto;object-fit: none;right: 0;"';
-        } 
-        $banner_right = false;
-        include __DIR__.'/banner.php'; 
+include __DIR__.'/banner.php'; 
         
         
-        ?>
+?>
         
         <div class="aboutrow">
             <div class="container">
