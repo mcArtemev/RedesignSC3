@@ -157,19 +157,22 @@ if($this->_datas['marka']['name'] == 'BenQ'){
       </script>
       <noscript><p><img src="/stat/piwik.php?idsite=<?=$this->_datas['piwik']?>&amp;rec=1" style="border:0;" alt="" /></p></noscript>
     <?php } ?>
-    
+<!-- Top nav menu -->
     <section class="infomenu-container">
         <div class="container">
             <ul class="infomenu">
-                <li class="infomenu-item"><a href="#">Главная</a></li>
-                <li class="infomenu-item"><a href="#">Цены</a></li>
-                <li class="infomenu-item"><a href="#">О сервисе</a></li>
-                <li class="infomenu-item"><a href="#">Вакансии</a></li>
-                <li class="infomenu-item"><a href="#">Контакты</a></li>
+            
+                <li class="infomenu-item"> <a href="<?=$urlHome?>">Главная</a></li>
+                <? foreach ($this->_datas['menu_header'] as $key => $value):
+                                  if ($url == $key)
+                                      echo '<li class="infomenu-item"><span>'.$value.'</span></li>';
+                                  else
+                                      echo '<li class="infomenu-item"><a href="'.$key.'">'.$value.'</a></li>';
+                          endforeach; ?>
             </ul>
         </div>
     </section>
-    
+<!-- Header -->
         <header class="header">
             <div class="container">
                 <div class="row">
@@ -201,65 +204,45 @@ if($this->_datas['marka']['name'] == 'BenQ'){
                         <a href="tel:+<?=$this->_datas['phone']?>" class="phone"><i class="fa fa-phone icon"></i><span class="mango-phone">
                                     <?=tools::format_phone($this->_datas['phone'])?></span></a>
                         <div class="time">график работы: <?=$time?></div>
-                    </div>
-                    
+                    </div> 
                 </div>
             </div>
-            </div>
+        </header>
+    <!-- Main nav menu -->
             <?php if (in_array($this->_datas['region']['name'], ['Новосибирск', 'Нижний Новгород', 'Екатеринбург', 'Казань', 'Санкт-Петербург', 'Москва'])) { ?>
-              <div class="navrow">
+              <nav class="main-nav">
                   <div class="container">
                       <i class="mobile-menu fa fa-bars"></i>
                       <ul class="topmenu">
-                          <?  if ($url == $urlHome)
-                                  echo '<li class="selected"><span>Главная</span></li>';
-                              else
-                                  echo '<li><a href="'.$urlHome.'">Главная</a></li>';
-
-                            unset($this->_datas['menu_header']['/ceny/']); ?>
-                            <?php //foreach ($this->_datas['all_devices_site'] as $type) { ?>
-                          <!--<li>
-                              <a href="#" class="sb"><?=tools::mb_ucfirst($type['type_m'])?></a>
-                              <ul class="submenu submenuBrand">
-                              <? /*foreach ($typeMarkas[$type['type_id']] as $brand):
-                                  $s_path = '/'.$accord[$type['type']].'_'.mb_strtolower($brand).'/';
-                                  if ($url == $s_path)
-                                      echo '<li class="selected"><span>'.$brand.'</span></li>';
-                                  else
-                                      echo '<li><a href="'.$s_path.'">'.$brand.'</a></li>';
-                                  endforeach;*/ ?>
-                              </ul>
-                          </li>-->
-                          <?php //}?>
-                          <? if (isset($a_marka)):?>
-
-                          <?php foreach ($a_marka as $type_name => $b_brands) { 
-                              natcasesort ($b_brands);
-                             if (empty($this->_datas['marka']['name']) || in_array($this->_datas['marka']['name'], $b_brands))
-                             { 
-                             ?>
-                                  <li>
-                                      
-                                      <a href="#" class="sb"><?=tools::mb_ucfirst($this->_datas['add_device_type'][$type_name]['type_m'])?></a>
-                                      <ul class="submenu submenuBrand">
-                                      <? foreach ($b_brands as $brand):
-                                          $s_path = '/'.$type_name.'_'.mb_strtolower($brand).'/';
-                                          if ($url == $s_path)
-                                              echo '<li class="selected"><span>'.$brand.'</span></li>';
-                                          else
-                                              echo '<li><a href="'.$s_path.'">'.$brand.'</a></li>';
-                                          endforeach; ?>
-                                      </ul>
-                                  </li>
-                            <?php
+                          
+                            
+                        <? if (isset($a_marka)):?>
+                            <?php foreach ($a_marka as $type_name => $b_brands) { 
+                                    natcasesort ($b_brands);
+                                    if (empty($this->_datas['marka']['name']) || in_array($this->_datas['marka']['name'], $b_brands)) { ?>
+                                  
+                                        <li>
+                                            <a href="#" class="sb"><?=tools::mb_ucfirst($this->_datas['add_device_type'][$type_name]['type_m'])?></a>
+                                            <!-- <ul class="submenu submenuBrand">
+                                                <? foreach ($b_brands as $brand):
+                                                        $s_path = '/'.$type_name.'_'.mb_strtolower($brand).'/';
+                                                        if ($url == $s_path)
+                                                            echo '<li class="selected"><span>'.$brand.'</span></li>';
+                                                        else
+                                                            echo '<li><a href="'.$s_path.'">'.$brand.'</a></li>';
+                                                    endforeach; 
+                                                ?>
+                                            </ul> -->
+                                        </li>
+                                    
                                
-                             }
-                        }
-                        ?>
+                                    <?php }
+                                } 
+                            ?>
                         <?endif;?>
                           <li>
-                              <a href="#" class="sb">Цены</a>
-                              <ul class="submenu submenuBrand">
+                              <a href="#" class="sb">Другое</a>
+                              <!-- <ul class="submenu submenuBrand">
                               <? if(!empty($this->_datas['marka']['name'])){
                                   $s_path = '/'.mb_strtolower($this->_datas['marka']['name']).'/ceny/';
                                   if ($url == $s_path)
@@ -273,50 +256,12 @@ if($this->_datas['marka']['name'] == 'BenQ'){
                                   endforeach; 
                                   }?>
                                   
-                              </ul>
+                              </ul> -->
                           </li>
-                          <? foreach ($this->_datas['menu_header'] as $key => $value):
-                                  if ($url == $key)
-                                      echo '<li class="selected"><span>'.$value.'</span></li>';
-                                  else
-                                      echo '<li><a href="'.$key.'">'.$value.'</a></li>';
-                          endforeach; ?>
+                          
                       </ul>
                   </div>
-                 
               </div>
-            <?php } else { ?>
-            <div class="navrow">
-                <div class="container">
-                    <i class="mobile-menu fa fa-bars"></i>
-                    <ul class="topmenu">
-                        <?  if ($url == '/')
-                                echo '<li class="selected"><span>Главная</span></li>';
-                            else
-                                echo '<li><a href="/">Главная</a></li>'; ?>
-                        <li>
-                            <a href="#" class="sb">услуги</a>
-                            <ul class="submenu">
-                                
-                            <? foreach ($this->_datas['all_devices'] as $device):
-                               
-                                
-                                $s_path = '/remont_'.$accord[$device['type']].'_'.$_marka_lower.'/';
-                                if ($url == $s_path)
-                                    echo '<li class="selected"><span>Ремонт '.$device['type_rm'].'</span></li>';
-                                else
-                                    echo '<li><a href="'.$s_path.'">Ремонт '.$device['type_rm'].'</a></li>';
-                                endforeach; ?>
-                            </ul>
-                        </li>
-                        <? foreach ($this->_datas['menu_header'] as $key => $value):
-                                if ($url == $key)
-                                    echo '<li class="selected"><span>'.$value.'</span></li>';
-                                else
-                                    echo '<li><a href="'.$key.'">'.$value.'</a></li>';
-                        endforeach; ?>
-                    </ul>
-                </div>
-            </div>
-          <?php }?>
-        </header>
+            <?php }  ?>
+        </nav>
+        

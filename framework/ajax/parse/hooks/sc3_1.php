@@ -303,6 +303,7 @@ class sc3_1 extends sc
         $this->_datas['menu_header'] = array(
                 '/ceny/' => 'Цены',
                 '/o_nas/' => 'О сервисе',
+                '/vakansii/' => 'Вакансии',
                 '/kontakty/' => 'Контакты',
         );
 
@@ -2730,7 +2731,7 @@ class sc3_1 extends sc
             'remont_monokolyos' => array('type' => 'моноколесо', 'type_rm' => 'моноколес', 'type_m' => 'моноколеса', 'type_de' => 'моноколесом', 'type_re' => 'моноколеса'),
             'remont_videocamer' => array('type' => 'видеокамера', 'type_rm' => 'видеокамер', 'type_m' => 'видеокамеры', 'type_de' => 'видеокамерой', 'type_re' => 'видеокамеры'),
             'remont_plotterov' => array('type' => 'плоттер', 'type_rm' => 'плоттеров', 'type_m' => 'плоттеры', 'type_de' => 'плоттером', 'type_re' => 'плоттера'),
-            'remont_smart_chasov' => array('type' => 'смарт-часы', 'type_rm' => 'смарт-часов', 'type_m' => 'смарт-часы', 'type_de' => 'смарт-часами', 'type_re' => 'смарт-часов'),
+            'remont_smart_chasov' => array('type' => 'смарт-часы', 'type_rm' => 'смарт-часов', 'type_m' => 'смарт&nbsp;часы', 'type_de' => 'смарт-часами', 'type_re' => 'смарт-часов'),
             'remont_holodilnikov' => array('type' => 'холодильник', 'type_rm' => 'холодильников', 'type_m' => 'холодильники', 'type_de' => 'холодильником', 'type_re' => 'холодильника'),
             'remont_posudomoechnyh_mashin' => array('type' => 'посудомоечная машина', 'type_rm' => 'посудомоечных машин', 'type_m' => 'посудомоечные машины', 'type_de' => 'посудомоечной машиной', 'type_re' => 'посудомоечной машины'),
             'remont_stiralnyh_mashin' => array('type' => 'стиральная машина', 'type_rm' => 'стиральных машин', 'type_m' => 'стиральные машины', 'type_de' => 'стиральной машиной', 'type_re' => 'стиральной машины'),
