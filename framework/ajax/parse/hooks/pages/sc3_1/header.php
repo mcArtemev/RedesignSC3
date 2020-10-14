@@ -222,7 +222,7 @@ if($this->_datas['marka']['name'] == 'BenQ'){
                                     if (empty($this->_datas['marka']['name']) || in_array($this->_datas['marka']['name'], $b_brands)) { ?>
                                   
                                         <li>
-                                            <a href="#" class="sb"><?=tools::mb_ucfirst($this->_datas['add_device_type'][$type_name]['type_m'])?></a>
+                                            <a href="/<?=$accord[$device['type']]?>_<?=tools::translit($marka,'_')?>/" class="sb"><?=tools::mb_ucfirst($this->_datas['add_device_type'][$type_name]['type_m'])?></a>
                                             <!-- <ul class="submenu submenuBrand">
                                                 <? foreach ($b_brands as $brand):
                                                         $s_path = '/'.$type_name.'_'.mb_strtolower($brand).'/';
