@@ -23,6 +23,8 @@ $mail_counter = $this->_datas['mail_counter'];
 $accord = $this->_datas['accord'];
 $accord_img = $this->_datas['accord_image'];
 
+$time = ($this->_datas['partner']['time']) ? $this->_datas['partner']['time'] : 'пн-вс: 10:00 - 20:00';
+
 $url = ($this->_datas['arg_url'] != '/') ? '/'.$this->_datas['arg_url'].'/' : '/';
 
 $address = $this->_datas['region']['name'].', '.$this->_datas['partner']['address1'];
@@ -70,11 +72,70 @@ else {
 }
 
 ?>
+  <!--  -->
+  <section>
 
-        <div class="footerrow">
+    <div class="container">
+      <div class="row contacts-block gx-0">
+        <div class="col-md-6" id="cnt-map"></div>
+        
+
+        <div class="col-md-6">
+          <div class="contacts-block-info">
+            <h2>Контакты</h2>
+            <p class="mt-3">Работаем без выходных с <?=$time?></p>
+            <ul class="town-list" id="cnt-accordion">
+                  <? $i =0;
+                    foreach ($addresis as $value):
+                        $v = ($value['region_name']) ? $value['region_name'] : 'Москва';
+                        $address = $value['address2'] ? $value['address2'] : $value['address1'];
+                        $urlSite = preg_replace('/^([a-z]+\.)([a-z]+\.support)/', '$2', $value['site']);
+                        if (isset($this->_datas['geo']) && $v != 'Москва') { continue; }?>
+                          <div class="contacttable panel">
+                            <? if ($i): ?>
+                              <li class="" data-target="#cnt-<?=$i?>"  data-x="<?=$value['x']?>" data-y="<?=$value['y']?>"><span class="name"><?=$v?></span>
+                                <i class="fas fa-map-marker-alt icon"></i>
+                                <p><a class="phone" href="http://<?=$urlSite?><?=($url)?>"><?=tools::format_phone($value['phone'])?></a></p>
+                              
+                            <? else :?>
+                              <li class="active" data-target="#cnt-<?=$i?>"  data-x="<?=$value['x']?>" data-y="<?=$value['y']?>">
+                                <i class="fas fa-map-marker-alt icon"></i><span class="name"><?=$v?></span>
+                                <p><a class="phone"><?=tools::format_phone($value['phone'])?></a></p>
+                              
+                            <?endif;?>
+                            </li>
+                            </div>   
+                            <?  $i++;
+                    endforeach; 
+                  ?>
+            </ul>  
+                   <div class="row">
+                            <div class="col-md-7">   
+                              <p><b>Остались вопросы?</b></br>Оставьте номер вашего телефона и оператор колл центра обязательно перезвонит вам</p>
+                            </div>
+                            <div class="col-md-5 align-self-center"> <button class="inputbutton inputbutton-outlinecallBackBtn">Перезвонить&nbsp;мне</button></div>
+                   </div> 
+          </div>
+        </div>
+      </div>
+    </div>
+  <section>
+
+
+
+
+
+
+
+
+
+
+
+  <!--  -->
+        <div class="footerrow" >
             <div class="container">
                 <div class="footerflex">
-                    <div class="footeritem">
+                    <div class="footeritem contact-map">
                         <div class="footertitle">Услуги сервиса</div>
                           <?php if (in_array($url, ['/dostavka/', '/vakansii/', '/o_nas/', '/kontakty/']) || !isset($this->_datas['marka'])) { ?>
                             <div class="panel-group" id="types-accordion">
@@ -151,9 +212,7 @@ else {
 
                                         <? if ($i): ?>
 
-                                         <div class="contacttitle collapsed" data-toggle="collapse"
-                                                data-target="#cnt-<?=$i?>" data-parent="#cnt-accordion" data-x="<?=$value['x']?>" data-y="<?=$value['y']?>"><?=$v?></div>
-
+                                         
                                             <div class="collapse" id="cnt-<?=$i?>">
                                                 <p><a href="http://<?=$urlSite?><?=($url)?>"><?=tools::format_phone($value['phone'])?></a></p>
 
