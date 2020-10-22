@@ -125,35 +125,21 @@ else {
       <div class="row">
         <div class="col-md-12">
           <p class="footer-title">Услуги сервиса:</p>
-          <?php if (in_array($url, ['/dostavka/', '/vakansii/', '/o_nas/', '/kontakty/']) || !isset($this->_datas['marka'])) { ?>
-            <div class="panel-group" id="types-accordion">
+          <?php if (in_array($url, ['/o_nas/', '/dostavka/', '/vakansii/', '/kontakty/']) || !isset($this->_datas['marka'])) { ?>
+            <ul class="footermenu">
 
-                            <?php foreach ($this->_datas['all_devices_site'] as $type) { ?>
-                              <div class="contacttable panel">
-                                <div class="contacttitle collapsed" data-toggle="collapse"
-                                       data-target="#types-<?=$type['type_id']?>" data-parent="#types-accordion"><?=tools::mb_ucfirst($type['type_m'])?></div>
-                                       <div class="collapse" id="types-<?=$type['type_id']?>">
-                                  <? foreach ($typeMarkas[$type['type_id']] as $brand):
-                                      $s_path = '/'.$accord[$type['type']].'_'.mb_strtolower($brand).'/';
-                                      echo '<p><a href="'.$s_path.'">'.$brand.'</a></p>';
-                                      endforeach; ?>
-                                    </div>
-                                  </div>
-                            <?php } ?>
+                           
                             
                             <?php foreach ($this->_datas['a_marka'] as $type_name => $brands) { ?>
-                              <div class="contacttable panel">
-                                <div class="contacttitle collapsed" data-toggle="collapse"
-                                       data-target="#types-<?=$type_name?>" data-parent="#types-accordion"><?=tools::mb_ucfirst($this->_datas['add_device_type'][$type_name]['type_m'])?></div>
-                                       <div class="collapse" id="types-<?=$type_name?>">
-                                  <? foreach ($brands as $brand):
-                                      $s_path = '/'.$type_name.'_'.mb_strtolower($brand).'/';
-                                      echo '<p><a href="'.$s_path.'">'.$brand.'</a></p>';
-                                      endforeach; ?>
-                                    </div>
-                                  </div>
+                              
+                              <li>
+                                <a href=<?"'.$s_path.'"?>
+                                       data-target="#types-<?=$type_name?>" ><?=tools::mb_ucfirst($this->_datas['add_device_type'][$type_name]['type_m'])?></a>
+                                       
+                            </li>
+                                  
                             <?php } ?>
-            </div>
+              </ul>
                           <?php } else { ?>
                             <ul class="footermenu">
                             <? foreach ($this->_datas['all_devices'] as $device):
