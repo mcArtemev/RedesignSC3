@@ -160,7 +160,7 @@ $price_str = 'от <span>'.$price.'</span>';
                 </div>
             </div>
         </section>
-
+<!-- hi there -->
        
 
         
