@@ -10,6 +10,8 @@ $marka_upper = mb_strtoupper($this->_datas['marka']['name']);
 $marka = $this->_datas['marka']['name'];
 $marka_ru =  $this->_datas['marka']['ru_name'];
 
+
+
 $text = array();
 $text[] = array('<p>Компания');
 $text[] = array($this->_datas['servicename']);
@@ -183,6 +185,14 @@ $total[] = array('устройств</p>', 'аппаратов</p>');
 
 $this->_datas['total'] =  sc::_createTree($total, $feed);
 ?>
+<section class="content-screen">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="/">Главная</a></li>
+            <li>О сервисе</li>
+        </ul>
+    </div>
+</section>
 
         <div class="title-row">
             <div class="container">
@@ -190,8 +200,7 @@ $this->_datas['total'] =  sc::_createTree($total, $feed);
             </div>
         </div>
 
-         <? $banner_img = '/templates/moscow/img/shared/banners/'.$this->_datas['images']['o_nas'];
-         include __DIR__.'/banner.php'; ?>
+         
 
         <div class="aboutrow">
             <div class="container">
@@ -213,11 +222,7 @@ $this->_datas['total'] =  sc::_createTree($total, $feed);
         </div>
         <?endif;?>
 
-        <? include __DIR__.'/banner-total.php'; ?>
+        
+         
 
-         <?=$this->_datas['preims']?>
-
-        <ul class="breadcrumb">
-            <li><a href="/">Главная</a></li>
-            <li>О сервисе</li>
-        </ul>
+        
